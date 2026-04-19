@@ -9,7 +9,7 @@ import jakarta.ws.rs.core.Application;
 
 @ApplicationPath("/api/v1")
 public class SmartCampusApplication extends Application {
-    // This sets the base URL for all your API endpoints
+    // This sets the base URL for all API endpoints
 }
     
 
