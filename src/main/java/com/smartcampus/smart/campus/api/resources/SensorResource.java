@@ -59,4 +59,8 @@ public class SensorResource {
     public static Map<String, Sensor> getSensors() {
         return sensors;
     }
+    @Path("/{sensorId}/readings")
+    public SensorReadingResource getReadingResource(@PathParam("sensorId") String sensorId) {
+        return new SensorReadingResource(sensorId);
+    } 
 }
