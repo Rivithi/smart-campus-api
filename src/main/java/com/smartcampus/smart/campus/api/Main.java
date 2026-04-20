@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.smartcampus.smart.campus.api;
 
 import org.glassfish.grizzly.http.server.HttpServer;
@@ -14,7 +10,8 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         ResourceConfig config = new ResourceConfig()
-                .packages("com.smartcampus.smart.campus.api");
+                .packages("com.smartcampus.smart.campus.api",
+                          "com.smartcampus.smart.campus.api.resources");
 
         HttpServer server = GrizzlyHttpServerFactory.createHttpServer(
                 URI.create(BASE_URI), config);
