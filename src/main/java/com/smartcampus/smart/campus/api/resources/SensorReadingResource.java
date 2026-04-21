@@ -1,5 +1,6 @@
 package com.smartcampus.smart.campus.api.resources;
 
+import com.smartcampus.smart.campus.api.SensorUnavailableException;
 import com.smartcampus.smart.campus.api.Sensor;
 import com.smartcampus.smart.campus.api.SensorReading;
 import jakarta.ws.rs.*;
@@ -39,9 +40,8 @@ public class SensorReadingResource {
         }
 
         if (sensor.getStatus().equals("MAINTENANCE")) {
-            return Response.status(Response.Status.FORBIDDEN)
-                    .entity("{\"error\":\"Sensor is under maintenance\"}").build();
-        }
+    throw new SensorUnavailableException(sensorId);
+}
 
         if (reading.getId() == null) {
             reading.setId(java.util.UUID.randomUUID().toString());

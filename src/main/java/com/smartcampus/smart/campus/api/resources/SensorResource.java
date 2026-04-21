@@ -1,9 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.smartcampus.smart.campus.api.resources;
 
+import com.smartcampus.smart.campus.api.LinkedResourceNotFoundException;
 import com.smartcampus.smart.campus.api.Room;
 import com.smartcampus.smart.campus.api.Sensor;
 import jakarta.ws.rs.*;
@@ -34,11 +32,10 @@ public class SensorResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response createSensor(Sensor sensor) {
         Map<String, Room> rooms = RoomResource.getRooms();
-        if (!rooms.containsKey(sensor.getRoomId())) {
-            return Response.status(422)
-                    .entity("{\"error\":\"Room not found with id: " + sensor.getRoomId() + "\"}")
-                    .build();
-        }
+if (!rooms.containsKey(sensor.getRoomId())) {
+    throw new LinkedResourceNotFoundException(
+        "Room not found with id: " + sensor.getRoomId());
+}
         sensors.put(sensor.getId(), sensor);
         rooms.get(sensor.getRoomId()).getSensorIds().add(sensor.getId());
         return Response.status(Response.Status.CREATED).entity(sensor).build();
