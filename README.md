@@ -1,5 +1,8 @@
 # Smart Campus API
 
+## Video Demonstration
+Click here to watch the demo (https://drive.google.com/file/d/1f3pTDKbcP8uz91uN7q39UyeKBEnzDDUD/view?usp=sharing)
+
 A JAX-RS RESTful API for managing Rooms and Sensors in a Smart Campus environment.
 
 ## API Overview
